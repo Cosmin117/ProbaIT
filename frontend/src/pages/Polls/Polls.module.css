@@ -1,0 +1,21 @@
+.Poll {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7em;
+    background-color: white;
+    padding: 2em;
+    width: 80%;
+    border-radius: 2em;
+}
+
+.CrBtn {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    text-align: center;
+}
+
+.forms {
+    text-align: left;
+    
+}

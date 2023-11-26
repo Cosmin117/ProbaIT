@@ -5,14 +5,23 @@ const PopUpLogin = () => {
     function UnBlurBody () {
         document.body.style.opacity = 1;
         var Login = document.getElementById('PopUpLogin');
+        var div = document.getElementById("mainDiv");
 
         if(Login.style.display != 'none') {
+            div.className = styles.mainDiv;
             Login.style.display = 'none';
         }
     };
 
+    function Login () {
+        var Login = document.getElementById('PopUpLogin');
+        var div = document.getElementById("mainDiv");   
+        div.className = styles.mainDiv;
+        Login.style.display = 'none';
+    }
+
     return (
-        <>
+        <div id="Background">
             <div className={styles.PopUp}
                 id="PopUpLogin"
                 style={{display: "none"}}>
@@ -35,7 +44,7 @@ const PopUpLogin = () => {
                     <br/><br/>
                 </form>
             </div>
-        </>
+        </div>
     );
 }
 

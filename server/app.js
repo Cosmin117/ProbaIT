@@ -1,40 +1,38 @@
 // import modules
+const UserModel = require("./modules/UserModel.js")
+const PollModel = require('./modules/PollModel.js')
 const express = require("express");
-const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
 
 //app
 const app = express();
-
-//db
-mongoose.connect("mongodb://localhost:27017/Polls");
+app.use(express.json());
 
 //middleware
 app.use(morgan("dev"));
 app.use(cors({ origin: true, credentials: true }));
 
-//routes
-
 //port
 const port = 8080;
 
-const UserSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    password : String,
-})
-
-const UserModel = new mongoose.model("polls", UserSchema);
-UserModel.create({name: "Cosmin", email: "csm.ga@gm.com", password: "sfjaufda"})
-
-app.get("/getPolls", async (req, res) => {
+app.get("/users", async (req, res) => {
     const users = await UserModel.find({});
     console.log(users);
-    //const isUser = await UserModel.exists({age: "salam"});
-    //console.log(isUser);
-    res.send("mortii matii");
+    res.json(users);
+});
+
+app.get("/polls", async (req, res) => {
+    const polls = await PollModel.find({});
+    console.log(polls);
+    res.json(polls);
+});
+
+app.post("/polls", async (req, res) => {
+    //const poll = await PollModel.create(req);
+    res.send("sugi pula");
+    console.log(req.body);
 });
 
 //listener

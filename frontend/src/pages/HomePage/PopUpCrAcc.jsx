@@ -5,19 +5,25 @@ const PopUpCrAcc = () => {
     function UnBlurBody () {
         document.body.style.opacity = 1;
         var SignIn = document.getElementById('PopUpSignIn');
-        
+        var div = document.getElementById("mainDiv");
+
         if(SignIn.style.display != 'none') {
+            div.className = styles.mainDiv;
             SignIn.style.display = 'none';
         }
     };
 
     function CrAcc () {
-      
+        var SignIn = document.getElementById('PopUpSignIn');
+        var div = document.getElementById("mainDiv");
         var nume = document.getElementById('nume').value;
         var ademail = document.getElementById('email').value;
         var psswrd = document.getElementById('password').value;
      //   UserModel.create({name: nume, emai: ademail, password: psswrd});
     
+        
+        div.className = styles.mainDiv;
+        SignIn.style.display = 'none';
     }
 
     return (

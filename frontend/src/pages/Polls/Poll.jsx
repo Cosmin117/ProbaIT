@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from './Polls.module.css'
 
 const Poll = () => {
     return (
         <>
-            <div>
-                
+            <div className={styles.poll}>
+                <h3>title</h3>
             </div>
         </>
     );

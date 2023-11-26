@@ -1,29 +1,27 @@
-import React from 'react'
+import React from 'react';
 import styles from './HomePage.module.css';
 import logo from '../../images/logo.png';
 
-const NavBar = () => {
-    function LoginBlur () {
-        var Login = document.getElementById('PopUpLogin');        
-        var SignIn = document.getElementById('PopUpSignIn');
+const NavBarLg = () => {
+    function CreatePollBlur () {
+        var CreatePoll = document.getElementById('CreatePoll');
         var div = document.getElementById('mainDiv')
 
-        if(Login.style.display == 'none') {
+        if(CreatePoll.style.display == 'none') {
             div.className = styles.Modal;
-            Login.className = styles.PopUp;
-            Login.style.display = 'block';
+            CreatePoll.className = styles.PopUp;
+            CreatePoll.style.display = 'block';
         }
     }
 
-    function SignInBlur () {
-        var Login = document.getElementById('PopUpLogin');        
-        var SignIn = document.getElementById('PopUpSignIn');
+    function LogOutBlur () {
+        var LogOut = document.getElementById('LogOut');
         var div = document.getElementById('mainDiv')
 
-        if(SignIn.style.display == 'none') {
+        if(LogOut.style.display == 'none') {
             div.className = styles.Modal;
-            Login.className = styles.PopUp;
-            SignIn.style.display = 'block';
+            LogOut.className = styles.PopUp;
+            LogOut.style.display = 'block';
         }
     }
 
@@ -38,14 +36,14 @@ const NavBar = () => {
                     </li>
                     <li>
                         <button className={styles.navBarButton}
-                                onClick={LoginBlur}>
-                            <h3>Login</h3>
+                                onClick={LogOutBlur}>
+                            <h3>Log Out</h3>
                         </button>
                     </li>
                     <li>
                         <button className={styles.navBarButton}
-                                onClick={SignInBlur}>
-                            <h3>Sign in</h3>
+                                onClick={CreatePollBlur}>
+                            <h3>Create a Poll</h3>
                         </button>
                     </li>
                 </ul>
@@ -54,4 +52,4 @@ const NavBar = () => {
     );
 }
 
-export default NavBar;
+export default NavBarLg;

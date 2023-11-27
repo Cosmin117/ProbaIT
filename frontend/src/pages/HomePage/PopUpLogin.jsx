@@ -3,20 +3,19 @@ import styles from './HomePage.module.css'
 
 const PopUpLogin = () => {
     function UnBlurBody () {
-        document.body.style.opacity = 1;
         var Login = document.getElementById('PopUpLogin');
         var div = document.getElementById("mainDiv");
 
         if(Login.style.display != 'none') {
-            div.className = styles.mainDiv;
+            div.className = styles.Body;
             Login.style.display = 'none';
         }
     };
 
     function Login () {
         var Login = document.getElementById('PopUpLogin');
-        var div = document.getElementById("mainDiv");   
-        div.className = styles.mainDiv;
+        var div = document.getElementById("mainDiv");
+        div.className = styles.Body;
         Login.style.display = 'none';
     }
 
@@ -31,7 +30,7 @@ const PopUpLogin = () => {
                 </button>
                 <br/> 
                 <form action="">
-                    <h4>Login</h4>
+                    <h4>Login</h4> 
                     <label for="email">Email Address</label>
                     <br/>
                     <input type="text" id="email" name="fname"/>

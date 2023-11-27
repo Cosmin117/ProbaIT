@@ -29,27 +29,31 @@ const NavBar = () => {
 
     return (
         <>
-            <div>
-                <ul className={styles.navBar}>
-                    <li>
-                        <div className={styles.navBarImg}>
-                            <img className={styles.divImg} src={logo}/>
-                        </div>
-                    </li>
-                    <li>
-                        <button className={styles.navBarButton}
+            <header>
+                <div className={styles.navBarImg}>
+                    <img className={styles.divImg} src={logo} />
+                </div>
+
+                <input type="checkbox" id="menu-bar"/>
+                <label for="menu-bar">&#9776;</label>
+
+                <nav className={styles.navbar}>
+                    <ul>
+                        <li>
+                            <button
                                 onClick={LoginBlur}>
-                            <h3>Login</h3>
-                        </button>
-                    </li>
-                    <li>
-                        <button className={styles.navBarButton}
+                                <h3>Login</h3>
+                            </button>
+                        </li>
+                        <li>
+                            <button
                                 onClick={SignInBlur}>
-                            <h3>Sign in</h3>
-                        </button>
-                    </li>
-                </ul>
-            </div>
+                                <h3>Sign in</h3>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
         </>
     );
 }

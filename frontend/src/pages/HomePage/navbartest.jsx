@@ -1,27 +1,29 @@
-import React from 'react';
-import styles from './HomePage.module.css';
+import React, { useState } from 'react';
+import styles from './Responsive.module.css';
 import logo from '../../images/logo.png';
 
-const NavBarLg = () => {
-    function CreatePollBlur () {
-        var CreatePoll = document.getElementById('CreatePoll');
+const Navbartest = () => {
+    function LoginBlur() {
+        var Login = document.getElementById('PopUpLogin');
+        var SignIn = document.getElementById('PopUpSignIn');
         var div = document.getElementById('mainDiv')
 
-        if(CreatePoll.style.display == 'none') {
+        if (Login.style.display == 'none') {
             div.className = styles.Modal;
-            CreatePoll.className = styles.PopUp;
-            CreatePoll.style.display = 'block';
+            Login.className = styles.PopUp;
+            Login.style.display = 'block';
         }
     }
 
-    function LogOutBlur () {
-        var LogOut = document.getElementById('LogOut');
+    function SignInBlur() {
+        var Login = document.getElementById('PopUpLogin');
+        var SignIn = document.getElementById('PopUpSignIn');
         var div = document.getElementById('mainDiv')
 
-        if(LogOut.style.display == 'none') {
+        if (SignIn.style.display == 'none') {
             div.className = styles.Modal;
-            LogOut.className = styles.PopUp;
-            LogOut.style.display = 'block';
+            Login.className = styles.PopUp;
+            SignIn.style.display = 'block';
         }
     }
 
@@ -39,14 +41,14 @@ const NavBarLg = () => {
                     <ul>
                         <li>
                             <button
-                                onClick={LogOutBlur}>
-                                <h3>Log Out</h3>
+                                onClick={LoginBlur}>
+                                <h3>Login</h3>
                             </button>
                         </li>
                         <li>
                             <button
-                                onClick={CreatePollBlur}>
-                                <h3>Create a poll</h3>
+                                onClick={SignInBlur}>
+                                <h3>Sign in</h3>
                             </button>
                         </li>
                     </ul>
@@ -54,6 +56,6 @@ const NavBarLg = () => {
             </header>
         </>
     );
-}
+};
 
-export default NavBarLg;
+export default Navbartest;

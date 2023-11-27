@@ -32,7 +32,7 @@ app.get("/polls", async (req, res) => {
 app.post("/polls", async (req, res) => {
     //const poll = await PollModel.create(req);
     res.send("sugi pula");
-    console.log(req.body);
+    console.log(req.body.options[1]);
 });
 
 //listener

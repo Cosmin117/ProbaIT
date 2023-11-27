@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../HomePage/HomePage.module.css'
+import styles from './HomePage.module.css'
 
 const LogOut = () => {
     function LogOut () {
@@ -8,7 +8,7 @@ const LogOut = () => {
 
     function No () {
         document.getElementById('LogOut').style.display = "none";
-        document.getElementById("mainDiv").className = styles.mainDiv;
+        document.getElementById("mainDiv").className = styles.Body;
     }
 
     return (

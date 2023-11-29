@@ -29,7 +29,7 @@ const NavBar = () => {
 
     return (
         <>
-            <header>
+            <header style={{backgroundColor: "white", height: "8%"}}>
                 <div className={styles.navBarImg}>
                     <img className={styles.divImg} src={logo} />
                 </div>

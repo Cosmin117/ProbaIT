@@ -27,9 +27,9 @@ const NavBarLg = () => {
 
     return (
         <>
-            <header>
+            <header  style={{backgroundColor: "white", height: "8%"}}>
                 <div className={styles.navBarImg}>
-                    <img className={styles.divImg} src={logo} />
+                    <img className={styles.divImg} src={logo}/>
                 </div>
 
                 <input type="checkbox" id="menu-bar"/>

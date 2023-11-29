@@ -23,6 +23,7 @@ const LogOut = () => {
                         onClick={LogOut}>
                             Yes
                 </button>
+                
                 <button className={styles.b1}
                         onClick={No}>
                             No

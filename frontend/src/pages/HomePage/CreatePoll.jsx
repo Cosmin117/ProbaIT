@@ -23,9 +23,45 @@ const CreatePoll = () => {
 	function handleVotingTypeChange(type) {
 		setVotingType(type);
 	}
+
+	async function postData(url = "", data = {}) {
+		const response = await fetch(url, {
+			method: "POST",
+			mode: "cors",
+			cache: "no-cache",
+			credentials: "same-origin",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			redirect: "follow",
+			referrerPolicy: "no-referrer",
+			body: JSON.stringify(data),
+		});
+
+		return response.json();
+	}
+
+	async function postJSON(data) {
+		try {
+			const response = await fetch("http://localhost:8080/polls", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(data),
+			});
+			
+			const result = await response.json();
+		  	console.log("Success:", result);
+		} catch (error) {
+			console.error("Error:", error);
+		}
+	}
+	  
+
 	const CreateNewPoll = () => {
 		if (val.length >= 3) {
-			let name = document.getElementById("Question").value;	
+			let name = document.getElementById("Question").value;
 			let sglCh1 = document.getElementById("sglCh").checked;
 			let obj = Object.assign({}, val);
 
@@ -37,52 +73,45 @@ const CreatePoll = () => {
 				type = 1;
 			}
 
-			//console.log(title, voteType, obj);
+			var Poll = [{
+				title: name,
+				votingType: type,
+				options: obj
+			}];
+
+			
+			postJSON(Poll);
+
 			document.getElementById("CreatePoll").style.display = "none";
 			document.getElementById("mainDiv").className = styles.mainDiv;
-			window.location.reload(false);
+			//window.location.reload(false);
 		} else {
 			alert("Nu ai numarul necesar de optiuni pentru a crea un poll!");
 		}
 
-		// fetch("localhost:8080/posts", {
-		// 	method: "POST",
-
-		// 	body: JSON.stringify({
-		// 		title: name,
-		// 		votingType: type,
-		// 		object: obj
-		// 	}),
-
-			
-		// })
-		
-	
-	
-
 		console.log(val);
 	};
-	
-	function UnBlurBody () {
-			document.body.style.opacity = 1;
-			var crPoll = document.getElementById('CreatePoll');
-			var div = document.getElementById("mainDiv");
-	
-			if(crPoll.style.display != 'none') {
-				div.className = styles.body;
-				crPoll.style.display = 'none';
-			}
+
+	function UnBlurBody() {
+		document.body.style.opacity = 1;
+		var crPoll = document.getElementById('CreatePoll');
+		var div = document.getElementById("mainDiv");
+
+		if (crPoll.style.display != 'none') {
+			div.className = styles.body;
+			crPoll.style.display = 'none';
+		}
 	};
-	
+
 	return (
 		<>
 			<div className={styles.Poll} id="CreatePoll" style={{ display: "none" }}>
-			<button className={styles.popUpXButton}
-                        onClick={UnBlurBody}>
-                            X
-                </button>
-				<br/>
-				
+				<button className={styles.popUpXButton}
+					onClick={UnBlurBody}>
+					X
+				</button>
+				<br />
+
 				<h2>Create a Poll</h2>
 				<br></br>
 

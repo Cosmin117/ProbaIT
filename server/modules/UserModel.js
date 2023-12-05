@@ -1,14 +1,16 @@
-// import modules
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
-//db
-mongoose.connect("mongodb://localhost:27017/Polls");
-
-const UserSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    password: String,
+const User = new mongoose.Schema({
+	email:{
+		type: String,
+		required: true
+	},
+	password:{
+		type: String,
+		required:true
+	}
 })
 
-const UserModel = new mongoose.model("users", UserSchema);
-module.exports = { UserModel };
+const collection = mongoose.model("collection", User)
+
+module.exports=collection

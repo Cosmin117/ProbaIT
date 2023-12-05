@@ -43,6 +43,7 @@ const CreatePoll = () => {
 
 	async function postJSON(data) {
 		try {
+			console.log("Cosmin");
 			const response = await fetch("http://localhost:8080/polls", {
 				method: "POST",
 				headers: {
@@ -90,6 +91,7 @@ const CreatePoll = () => {
 		}
 
 		console.log(val);
+        document.body.style.overflow = "auto"; 
 	};
 
 	function UnBlurBody() {
@@ -100,6 +102,7 @@ const CreatePoll = () => {
 		if (crPoll.style.display != 'none') {
 			div.className = styles.body;
 			crPoll.style.display = 'none';
+			document.body.style.overflow = "auto"; 
 		}
 	};
 

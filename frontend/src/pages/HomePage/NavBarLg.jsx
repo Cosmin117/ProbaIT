@@ -4,22 +4,27 @@ import logo from '../../images/logo.png';
 
 const NavBarLg = () => {
     function CreatePollBlur () {
+        
+        window.scrollTo ({top: 0, behavior: "smooth"});
         var CreatePoll = document.getElementById('CreatePoll');
         var div = document.getElementById('mainDiv')
 
         if(CreatePoll.style.display == 'none') {
             div.className = styles.Modal;
+            document.body.style.overflow = "hidden";
             CreatePoll.className = styles.PopUp;
             CreatePoll.style.display = 'block';
         }
     }
 
     function LogOutBlur () {
+        window.scrollTo ({top: 0, behavior: "smooth"});
         var LogOut = document.getElementById('LogOut');
         var div = document.getElementById('mainDiv')
 
         if(LogOut.style.display == 'none') {
             div.className = styles.Modal;
+            document.body.style.overflow = "hidden";
             LogOut.className = styles.PopUp;
             LogOut.style.display = 'block';
         }

@@ -210,7 +210,7 @@ header label {
     margin-bottom: 1em;
 }
 
-@media(max-width: 1080px) {
+@media(max-width: 1300px) {
     body {
         background-repeat: no-repeat;
         background-attachment: fixed;

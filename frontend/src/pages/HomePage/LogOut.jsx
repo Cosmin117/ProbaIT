@@ -9,6 +9,7 @@ const LogOut = () => {
     function No () {
         document.getElementById('LogOut').style.display = "none";
         document.getElementById("mainDiv").className = styles.Body;
+        document.body.style.overflow = "auto"; 
     }
 
     return (

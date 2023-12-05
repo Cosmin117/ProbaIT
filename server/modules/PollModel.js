@@ -1,11 +1,20 @@
-const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/Polls");
+// import modules
+const mongoose = require("mongoose");
 
 const PollSchema = new mongoose.Schema({
-    title: String, 
-    votingType: Boolean, 
-    options: Array
-});
+    title: {
+        type:String,
+        required:true
+    },
+    type: {
+        type:Boolean,
+        required:true
+    }, 
+    options: {
+        type: Object,
+        require: true
+    }
+})
 
 const PollModel = new mongoose.model("polls", PollSchema);
-module.export = { PollModel }; 
+module.exports = { PollModel };

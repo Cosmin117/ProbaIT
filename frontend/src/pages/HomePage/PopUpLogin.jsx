@@ -9,6 +9,7 @@ const PopUpLogin = () => {
         if(Login.style.display != 'none') {
             div.className = styles.Body;
             Login.style.display = 'none';
+            document.body.style.overflow = "auto"; 
         }
     };
 
@@ -17,6 +18,7 @@ const PopUpLogin = () => {
         var div = document.getElementById("mainDiv");
         div.className = styles.Body;
         Login.style.display = 'none';
+        document.body.style.overflow = "auto"; 
     }
 
     return (

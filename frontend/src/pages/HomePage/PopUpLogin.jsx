@@ -51,6 +51,7 @@ const PopUpLogin = () => {
       console.log(data);
       localStorage.setItem('jwt', data.token);
       localStorage.setItem('user', Email)
+      localStorage.setItem('lgdate', Date.now());
         alert("You are logged in successfully");
        window.location.href = '/';
       console.log(response.ok)

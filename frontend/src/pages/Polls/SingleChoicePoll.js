@@ -49,49 +49,48 @@ const SingleChoicePoll = ({ poll }) => {
 
     async function vote() {
         const user = localStorage.getItem('user');
-
+    
         if (user === null) {
             alert("Nu puteti vota, trebuie sa va conectati mai intai");
         } else {
-                var cont = 0;
-                for (const [key, value] of Object.entries(poll.options)) {
-                    const isChecked = selectedOptions.includes(key);
-                    cont += 1;
-                    if (isChecked === true) poll.votes[key] += 1;
-                }
-
-                var arr = poll.votes;
-                console.log(arr);
-            
-                for (const [key, value] of Object.entries(poll.options)) {
-                    console.log(poll.votes[key]);
-                }
-
-                
-                const path = encodeURIComponent(poll.title);
-
-                try {
-                    const response = await fetch(`http://localhost:5001/polls/${path}/votes`, {
-                      method: 'PUT',
-                      headers: {
-                        'Content-Type': 'application/json',
-                      },
-                      body: JSON.stringify({ votes: arr }),
-                    });
-                
-                    if (!response.ok) {
-                      throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                
-                    const data = await response.json();
-                    console.log('Poll votes updated successfully:', data.updatedPoll);
-              } catch (error) {
-                    console.error('Fetch error:', error);
-                  }
-
+            var cont = 0;
+            for (const [key, value] of Object.entries(poll.options)) {
+                const isChecked = selectedOptions.includes(key);
+                cont += 1;
+                if (isChecked === true) poll.votes[key] += 1;
             }
+    
+            var arr = poll.votes;
+            console.log(arr);
+    
+            for (const [key, value] of Object.entries(poll.options)) {
+                console.log(poll.votes[key]);
+            }
+    
+            const path = encodeURIComponent(poll.title);
+    
+            try {
+                const response = await fetch(`http://localhost:5001/polls/${path}/votes`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ votes: arr }),
+                });
+    
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+    
+                const data = await response.json();
+                console.log('Poll votes updated successfully:', data.updatedPoll);
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        }
 
     }
+    
 
   return (
     <div className={styles.Poll}>

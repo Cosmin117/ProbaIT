@@ -19,7 +19,7 @@ const Footer = () => {
                         <a href="https://www.facebook.com/cosmin.gaicu.7" target="_blank"><img src={facebook}  style={MyStyle}/></a>
                     </div>
                     <div className={styles.column}>
-                        <a href="" target="_blank"><img src={twitch} style={MyStyle}/></a>
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><img src={twitch} style={MyStyle}/></a>
                     </div>
                 </div>
             </div>     

@@ -49,11 +49,17 @@ function App() {
 	var IsLoggedIn;
 
 	const token = localStorage.getItem('jwt');
+	const date = localStorage.getItem('lgdate');
+
 
 	if (!token) {
 		IsLoggedIn = false;
 	} else {
-		IsLoggedIn = true;
+		if (Date.now() - date < 1000 * 60 * 60) {
+			IsLoggedIn = true;
+		} else { 
+			IsLoggedIn = false;
+		}
 	}
 
 	// var polls; 	

@@ -1,0 +1,38 @@
+Hello hello!
+
+Vreau sa va spun inainte de toate ca pe cat de interesant a fost sa realizez aceasta proba, pe atat de mult m am enervat uneori sa o realizez, asta ca explicatie pentru posibilele injuraturi pe care am uitat sa le sterg :) 
+
+(SI SA MI SE IERTE ROMGLEZA DE PE PARCURSUL PROBEI VA ROG FRUMOS)
+
+Avem doua foldere mari si tari, unul client-side (frontend) si unul server-side (server)
+
+In server am creat modelele pentru poll si user,  am realizat conexiunea cu baza de date, am creat endpoint uri pentru fiecare
+dintre actiunile legate de user/poll pe care le voi trimite din frontend. 
+
+In folderul frontend am realizat pagina pe care sunt afisate pollurile, dar si containere pentru navbar, poll (care variaza daca este cu alegere multipla sau nu), footer.
+
+Designul paginii este responsive, dar doar pentru componente precum navbar, footer (am ales sa nu fac responsive si pollurile, deoarece, pe ecran mare, ar fi artat nasol daca un poll avea 10 variante, iar altul 3).
+
+Cand cream un cont nou acesta trebuie sa fie email, iar parola sa aiba minim 8 caractere (parola este hash-uita!).
+
+Cand dam login, retinem data, jwt, userEmail in localStorage pentru ca toate ne vor folosi pe viitor.
+
+Cand se incarca main page ul se verifica daca suntem logati si daca nu am fost logati pentru mai mult timp de o ora.
+
+Pe pagina principala ne sunt afisate toate pollurile, dar putem vota, sterge sau crea poll doar daca suntem logati.
+
+Dupa ce ne am logat, putem observa ca si navbar ul s a modificat, avem acum optiuni de create a poll si logout.
+
+Acum ca suntem logati putem vota si da detele poll, doar daca poll ul ne apartine.
+
+Avem poll uri cu un singur vot, si cu voturi multiple, care sunt modificate in baza de date de fiecare data cand se voteaza (logic, nu?).
+
+Toate actiunile enumerate au cate un endpoint anume in fisierul de server, pentru o mai buna functionalitate (alerta: vrajeala).
+
+Recunosc, nu am pus accent atat de mult pe partea de design, am preferat sa ma axez pe functionalitatea proiectului si sa ating cat mai multe puncte.
+
+Va rog apasati pe butonul de twitch din footer!!
+
+Vreau sa adaug si faptul ca ii multumesc mentorului meu pentru ajutorul oferit, practic "AVETI INCREDERE IN DAN ALIN!!!". 
+
+Va pup jos, ciao!

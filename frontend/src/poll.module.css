@@ -1,0 +1,32 @@
+.Poll {
+    padding: 1.5em;
+    background-color: white;
+    margin: 1em;
+    border-radius: 1em;
+    overflow: hidden;
+    align-items: left;
+}
+
+.Poll ul {
+    list-style: none;
+    float: left;
+}
+
+.Poll ul li {
+    width: 100%;
+}
+
+.Poll button {
+    width: 60%;
+    margin: 0.9em;
+    padding: 0px;
+    color: white;
+    text-decoration: none;
+    border: none;
+    font-size: 1em;
+    background-color: #043b5b;
+    border-radius: 0.3em;
+    bottom: 0;
+    padding: 1.3em;
+    float: right;
+}

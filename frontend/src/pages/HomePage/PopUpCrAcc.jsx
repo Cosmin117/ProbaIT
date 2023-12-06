@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import styles from './HomePage.module.css'
 
 
+
 const PopUpCrAcc = () => {
     function UnBlurBody() {
         document.body.style.opacity = 1;
@@ -53,30 +54,36 @@ const PopUpCrAcc = () => {
   const[Email, setEmail] = useState("");
   const[Password, setPassword] = useState("");
   const[Eroare, setEroare] = useState("");  
+  
 
-  async function registerUser(event) {
-    console.log(Email, Password);
-    event.preventDefault()
+    async function registerUser(event) {
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    const response = await fetch('http://localhost:5001/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        Email,
-        Password,
-      }),
-      
-    })
-    const data = await response.json()
+        if (!(emailRegex.test(Email)) || Password.length < 8 ) {
+            alert("Email sau parola incorecte");
+        } else {
+            event.preventDefault()
+            const response = await fetch('http://localhost:5001/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: Email,
+                password: Password,
+            }),
+            
+            })
+            const data = await response.json()
 
-    console.log(data);
-    if(response.ok) {
-    //   window.location.href = '/';
-      console.log(response.ok)
-    }   
-}
+            console.log(data);
+            if(response.ok) {
+            window.location.href = '/';
+            }  else alert(data.message);
+        }
+
+        
+    }
 
 
     return (

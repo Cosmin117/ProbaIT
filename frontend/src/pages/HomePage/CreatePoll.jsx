@@ -24,27 +24,10 @@ const CreatePoll = () => {
 		setVotingType(type);
 	}
 
-	async function postData(url = "", data = {}) {
-		const response = await fetch(url, {
-			method: "POST",
-			mode: "cors",
-			cache: "no-cache",
-			credentials: "same-origin",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			redirect: "follow",
-			referrerPolicy: "no-referrer",
-			body: JSON.stringify(data),
-		});
-
-		return response.json();
-	}
 
 	async function postJSON(data) {
 		try {
-			console.log("Cosmin");
-			const response = await fetch("http://localhost:8080/polls", {
+			const response = await fetch("http://localhost:5001/polls", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -60,32 +43,51 @@ const CreatePoll = () => {
 	}
 	  
 
-	const CreateNewPoll = () => {
+	async function CreateNewPoll() {
 		if (val.length >= 3) {
+			
 			let name = document.getElementById("Question").value;
 			let sglCh1 = document.getElementById("sglCh").checked;
 			let obj = Object.assign({}, val);
-
-			let type;
+			var value = new Array(val.length).fill(0);
+			let vtype;
 
 			if (sglCh1 == true) {
-				type = 0;
+				vtype = 0;
 			} else {
-				type = 1;
+				vtype = 1;
 			}
 
 			var Poll = [{
 				title: name,
-				votingType: type,
-				options: obj
+				type: vtype,
+				options: obj,
+				votes: value,
+				voteUser: localStorage.getItem('user'),
 			}];
 
+			const response = await fetch("http://localhost:5001/polls", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					title: name,
+					type: vtype,
+					options: obj,
+					votes: value,
+					voteUser: localStorage.getItem('user'),
+				}),
+			});
 			
-			postJSON(Poll);
+			console.log(JSON.stringify(Poll));		
+			const result = await response.json();
+		  	console.log(result);
+			
 
 			document.getElementById("CreatePoll").style.display = "none";
 			document.getElementById("mainDiv").className = styles.mainDiv;
-			//window.location.reload(false);
+			window.location.reload(false);
 		} else {
 			alert("Nu ai numarul necesar de optiuni pentru a crea un poll!");
 		}

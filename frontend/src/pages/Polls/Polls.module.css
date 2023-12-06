@@ -1,4 +1,4 @@
-.Poll {
+/* .Poll {
     margin-left: auto;
     margin-right: auto;
     margin-top: 7em;
@@ -6,7 +6,7 @@
     padding: 2em;
     width: 80%;
     border-radius: 2em;
-}
+} */
 
 .poll { 
     background-color: white;
@@ -20,4 +20,40 @@
     align-items: center;
     top: 50%;
     left: 50%;
+}
+
+.Poll {
+    padding: 1.5em;
+    background-color: white;
+    margin: 1em;
+    border-radius: 1em;
+    overflow: hidden;
+    align-items: left;
+}
+
+.Poll ul {
+    list-style: none;
+    float: left;
+    width: 100%;
+}
+
+.Poll ul li {
+    width: 100%;
+}
+
+.Poll button {
+    width: 40%;
+    margin: 0.9em;
+    padding: 0px;
+    color: white;
+    text-decoration: none;
+    border: none;
+    font-size: 1em;
+    background-color: #043b5b;
+    border-radius: 0.3em;
+    bottom: 0;
+    padding: 1.3em;
+    float: right;
+    text-align: center;
+    justify-content: center;
 }

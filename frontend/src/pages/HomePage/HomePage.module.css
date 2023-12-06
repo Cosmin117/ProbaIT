@@ -11,7 +11,7 @@
 
 header {
     position: fixed;
-    padding: 10%;
+    padding: 1%;
     top: 0;
     left: 0;
     right: 0;
@@ -23,7 +23,6 @@ header {
     z-index: 1000;
     margin: 0;
     box-shadow: #002d47 3px 3px;
-    height: 10%
 }
 
 header .navbar ul {
@@ -83,12 +82,13 @@ header .navbar ul li button {
     background-color: #FF1F66;
     list-style-type: none;
     text-align: center;
-    margin: 0;
-    padding: 0;
-    bottom: 0;
     position: fixed;
     overflow: hidden;
     width: 100%;
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+    padding-bottom: 0;
 }
 
 .footer a {

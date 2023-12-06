@@ -1,34 +1,88 @@
 import './App.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from './pages/HomePage/NavBar.jsx';
 import Footer from './pages/HomePage/Footer.jsx';
 import PopUpLogin from './pages/HomePage/PopUpLogin.jsx';
-import PopUpCrAcc from './pages/HomePage/PopUpCrAcc.jsx'
-import Poll from './pages/Polls/SglPoll.jsx'
+import PopUpCrAcc from './pages/HomePage/PopUpCrAcc.jsx';
 import CreatePoll from './pages/HomePage/CreatePoll.jsx'
-import styles from './pages/HomePage/HomePage.module.css'
 import LogOut from './pages/HomePage/LogOut.jsx'
 import NavBarLg from './pages/HomePage/NavBarLg.jsx';
 import mihau from './images/testoasa.png'
-import Navbartest from './pages/HomePage/navbartest.jsx'
-import SglPoll from './pages/Polls/SglPoll.jsx'
+// const jwt = require('jsonwebtoken');
+import styles from './poll.module.css'
+import PollList from './pages/Polls/PollList.js'
 
 function App() {
-	// fetch("127.0.0.1:8080/getPolls").then(async(res) => {
-	//   const ceva = await res.body.text();
-	//   console.log(ceva);
-	// });
+	const [selectedOption, setSelectedOption] = useState(null);
 
-	var IsLoggedIn = false;
+	const handleOptionChange = (option) => {
+		setSelectedOption(option);
+	};
+
+	const [selectedOptions, setSelectedOptions] = useState([]);
+
+	const handleOptionToggle = (option) => {
+		const isSelected = selectedOptions.includes(option);
+
+		if (isSelected) {
+			// Deselect the option
+			setSelectedOptions(selectedOptions.filter((selected) => selected !== option));
+		} else {
+			// Select the option
+			setSelectedOptions([...selectedOptions, option]);
+		}
+	};
+
+
+	const getLoggedInUser = async () => {
+		//try {
+		const res = await fetch("http:localhost:5001/getLoggedInUser", {
+			method: "GET",
+		})
+
+		return await res.json();
+		// } catch (error) {
+		// 	throw new Error("Please login to continue");
+		// }
+	}
+
+	var IsLoggedIn;
+
+	const token = localStorage.getItem('jwt');
+
+	if (!token) {
+		IsLoggedIn = false;
+	} else {
+		IsLoggedIn = true;
+	}
+
+	// var polls; 	
+
+	// fetch("http://localhost:5001/polls")
+	// 	.then((response) => {
+	// 		if (!response.ok) {
+	// 			throw new Error(`HTTP error! Status: ${response.status}`);
+	// 		}
+	// 		return response.json();
+	// 	})
+	// 	.then((data) => {
+	// 		polls = data.polls;
+	// 	})
+	// 	.catch((error) => {
+	// 		console.error("Fetch error:", error);
+	// 	});
+
+	// const Polls = polls;
+
+
 	return (
 		<>
-
 			<link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'></link>
 			<link href='./App.css' rel='stylesheet' />
 
 			<div>
 
-				{(IsLoggedIn == true) ? <NavBarLg /> : <NavBar />}
+				{(IsLoggedIn == true) ? <NavBarLg style={{height:"2em"}}/> : <NavBar style={{height:"2em"}}/>}
 
 				<PopUpLogin />
 				<PopUpCrAcc />
@@ -47,32 +101,12 @@ function App() {
 						</div>
 					</div>
 
-					<br></br><div class="row" >
-						<div class="column">
+					<br></br>
+						<PollList/>
 
-							{/* {
-								fetch ("http://localhost:8080/users")
-									.then (response => response.json())
-									.then (json => {
-										let li = '<tr><th>Name</th><th>Email</th><th>Parola</th></tr>';
-
-										json.forEach(user => {
-											li += '<tr><td>${user.name}</td><td>${user.email}</td><td>${user.password}</td></tr>';
-										});
-
-									document.getElementById('users').innerHTML = li;
-									
-								})
-							}
-
-							<table id="users"></table> */}
-
-						</div>
-					</div>
 				</div>
-
-				<Footer />
 			</div>
+			<Footer />
 		</>
 	);
 }

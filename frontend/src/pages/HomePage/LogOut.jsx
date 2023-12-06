@@ -1,15 +1,33 @@
 import React from 'react'
 import styles from './HomePage.module.css'
+// import { history } from 'react-router-dom';
 
 const LogOut = () => {
-    function LogOut () {
-
-    }
-
     function No () {
         document.getElementById('LogOut').style.display = "none";
         document.getElementById("mainDiv").className = styles.Body;
         document.body.style.overflow = "auto"; 
+    }
+
+    const logout = async () => {
+        try {
+            const res = await fetch("http:localhost:5001/logout", {
+                method: "GET",
+            })
+
+            return await res.json();
+        } catch (error) {
+            console.log(error);
+        }
+
+        localStorage.removeItem("jwt");
+        localStorage.removeItem("user");
+
+        document.getElementById('LogOut').style.display = "none";
+        document.getElementById("mainDiv").className = styles.Body;
+        document.body.style.overflow = "auto"; 
+        
+       window.location.href = '/';
     }
 
     return (
@@ -21,7 +39,7 @@ const LogOut = () => {
                 <br></br>
                 <br></br>
                 <button className={styles.b1}
-                        onClick={LogOut}>
+                        onClick={logout}>
                             Yes
                 </button>
                 

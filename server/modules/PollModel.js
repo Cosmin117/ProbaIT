@@ -1,7 +1,7 @@
 // import modules
 const mongoose = require("mongoose");
 
-const PollSchema = new mongoose.Schema({
+const Poll = new mongoose.Schema({
     title: {
         type:String,
         required:true
@@ -13,8 +13,15 @@ const PollSchema = new mongoose.Schema({
     options: {
         type: Object,
         require: true
+    },
+    votes: {
+        type: Object,
+    },
+    voteUser: {
+        type: String,
     }
+
 })
 
-const PollModel = new mongoose.model("polls", PollSchema);
-module.exports = { PollModel };
+const polluri = new mongoose.model("polls", Poll);
+module.exports = polluri;
